@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: hsl(0, 0%, 100%);
+    }
+
+    /*nav bar*/
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      background: hsl(0, 0%, 100%);
+      box-shadow: 0 1px 2px hsla(0, 0%, 15%, 0.5);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+    }
+
+    .n-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 2rem;
+      max-width: 1600px;
+    }
+
+    .logo {
+      display: flex;
+      width: 100px;
+      height: 50px;
+    }
+
+    .n-container .n-menu {
+      display: flex;
+      text-align: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .n-container .n-menu li a {
+      text-decoration: none;
+      color: black;
+      font-size: 1.3rem;
+      font-weight: 500;
+      font-style: serif;
+      padding: 3px 20px;
+      transition: all 0.7s ease;
+      white-space: nowrap;
+    }
+
+    .n-container .n-menu li a:hover {
+      color: hsl(44, 100%, 48%);
+    }
+
+    .navbar-toggle {
+      display: none;
+      background: transparent;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      background: #000;
+      transition: all 0.3s ease-in-out;
+
+    }
+
+    .login-b {
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .login-b .log {
+      font-size: 1.2rem;
+      display: block;
+      width: 100px;
+      height: 30px;
+      border-radius: 10px;
+      background-color: hsl(44, 100%, 48%);
+    }
+
+    @media (max-width:1090px) {
+      .navbar {
+        backdrop-filter: none;
+      }
+
+      .n-container .n-menu {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.7rem !important;
+        position: absolute;
+        height: 100vh;
+        width: 250px;
+        top: 0;
+        right: 0;
+        padding: 5rem 1.5rem;
+        box-shadow: 0 10px 10px hsla(0, 0%, 0%, 0.5);
+        backdrop-filter: blur(10px);
+      }
+
+      .n-container .n-menu.active {
+        display: flex;
+      }
+
+      .navbar-toggle {
+        display: block;
+        z-index: 999;
+      }
+
+      .navbar-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      .navbar-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .navbar-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .n-container {
+        padding: 0 1rem;
+      }
+
+      .n-container .n-menu li a {
+        font-size: 1.2rem;
+        padding: 3px 15px;
+      }
+    }
+
+    :root {
+      --bg: #eaeaea;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #d97706;
+      --shadow: rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--accent);
+    }
+
+    header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .about {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 6px 16px var(--shadow);
+    }
+
+    .about h2 {
+      color: var(--accent);
+      margin-top: 0;
+    }
+
+    .about p {
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .logo1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #0b0b0b;
+      /* orange for HANDY */
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .logo1 .lanka {
+      color:rgb(245, 180, 0);
+      /* dark gray or any color you want */
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="n-container">
+      <a href="#" class="logo"><img src="logo.jpeg" alt="Logo Image"></a>
+      <button class="navbar-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="n-menu">
+        <li><a href="home.html">Home</a></li>
+      <li><a href="servise.html">Services</a></li>
+      <li><a href="contact us.html">Contact</a></li>
+        
+      </ul>
+    </div>
+    <script>
+      function 
+    </script>
+  </nav>
+  <header>
+    <header>
+      <div class="header-row">
+        <h1 class="logo1">
+          HANDY <span class="lanka">LANKA</span>
+        </h1>
+
+      </div>
+
+    </header>
+    <p>Reliable solutions for your household needs</p>
+  </header>
+
+  <section class="about">
+    <h2>About Us</h2>
+    <p>
+      At <strong>HANDY LANKA</strong>, we believe every home deserves care, comfort, and reliability.
+      Founded with the mission to make household services simple and trustworthy, we bring
+      professional expertise right to your doorstep.
+    </p>
+    <p>
+      Our team specializes in a wide range of home services including cleaning, plumbing,
+      electrical repairs, gardening, handyman work, and moving assistance. Each service is
+      delivered with attention to detail and a commitment to customer satisfaction.
+    </p>
+    <p>
+      We pride ourselves on being more than just a service provider—we’re your partner in
+      creating a safe, well‑maintained, and welcoming home environment.
+    </p>
+  </section>
+
+  <footer>
+    © <span id="year"></span> HANDY LANKA. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
